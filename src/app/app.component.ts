@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms'
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'reactForm';
+jsondatavalue : string;
+
+  constructor(private fb : FormBuilder)
+  {}
+
+  registrationForm=this.fb.group({
+    name : ['', Validators.required],
+    dob :['', Validators.required],
+    address : ['', Validators.required],
+  });
+
+ 
+  onSubmit()
+  {
+    this.jsondatavalue=this.registrationForm.value;
+  }
+
+
+
 }
